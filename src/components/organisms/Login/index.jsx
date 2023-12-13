@@ -5,7 +5,7 @@ import { colors } from '@/theme'
 
 import * as S from './styles'
 
-const Login = ({ callbackUrl }) => (
+export const Login = ({ callbackUrl }) => (
   <S.MainContainer>
     <S.FormContainer>
       <S.Logo
@@ -42,5 +42,3 @@ const Login = ({ callbackUrl }) => (
     <S.CarrouselContainer></S.CarrouselContainer>
   </S.MainContainer>
 )
-
-export default Login
