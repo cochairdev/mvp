@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 // import { Provider, useDispatch, useSelector } from 'react-redux'
+import './globals.css'
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useRouter } from 'next/router'
