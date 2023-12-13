@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@app-test-utils": ["./src/__tests__/app-test-utils.js"],
+      "@public/*": ["./public/*"],
+      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@data/*": ["./src/utils/data/*"],
+      "@hooks/*": ["./src/utils/hooks/*"],
+      "@prisma": ["./prisma"],
+      "@slices/*": ["./src/redux/*"],
+      "@theme": ["./src/theme"],
+      "@tstypes": ["./src/types"],
+      "@tstypes/*": ["./src/types/*"],
+      "@utils": ["./src/utils"],
+      "@utils/*": ["./src/utils/*"],
+      "@lib/*": ["./src/lib/*"]
+    },
+  }
+}
