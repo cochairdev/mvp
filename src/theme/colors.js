@@ -29,6 +29,8 @@ export default {
   grays: {
     heading: '#6C6874',
     subtle: '#777777',
+    info: '#625B71',
+    text: '#4A4853',
     sideMenuDefault: '#E2EBF4',
     sideMenuIcon: '#ABC0D6',
     buttonDisabled: '#D1D1D1',
