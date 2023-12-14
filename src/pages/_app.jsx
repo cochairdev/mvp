@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 // import { Provider, useDispatch, useSelector } from 'react-redux'
 import './globals.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -15,6 +17,7 @@ import {
   AuthProvider,
   useFirebaseApp,
 } from 'reactfire'
+import StyledComponentsRegistry from '../lib/styled/registry'
 
 // import { FragmentSnackbar, LinearProgress } from '@components'
 // import FragmentLoadingOverlay from '@components/atoms/FragmentLoadingOverlay'
@@ -70,12 +73,14 @@ const App = ({ Component, pageProps }) => {
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <QueryClientProvider client={queryClient}>
           <SessionProvider session={pageProps.session}>
-            {/* <Provider store={store}> */}
-            {/* <MessagesProvider> */}
-            {/* <FragmentSnackbar /> */}
-            <MainComponent Component={Component} pageProps={pageProps} />
-            {/* </MessagesProvider> */}
-            {/* </Provider> */}
+            <StyledComponentsRegistry>
+              {/* <Provider store={store}> */}
+              {/* <MessagesProvider> */}
+              {/* <FragmentSnackbar /> */}
+              <MainComponent Component={Component} pageProps={pageProps} />
+              {/* </MessagesProvider> */}
+              {/* </Provider> */}
+            </StyledComponentsRegistry>
           </SessionProvider>
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </QueryClientProvider>

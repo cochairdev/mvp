@@ -46,9 +46,11 @@ export const Text = styled(({ children, ...props }) =>
   color: ${({ color }) => color || colors.neutrals.x900};
   letter-spacing: 0;
   line-height: 1.375;
+  margin: 0;
   font-family: 'Noto Sans', sans-serif;
   font-size: 1em;
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || 400};
+  text-align: ${({ align }) => align || 'left'};
   ${({ variant }) => variant && baseTypographyStyles[variant]}
 `

@@ -9,6 +9,7 @@ export function useRequestState() {
   })
 
   const setLoading = useCallback(loading => {
+    console.log('loading', loading)
     setState({
       loading,
       success: false,
