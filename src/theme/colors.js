@@ -2,6 +2,7 @@ export default {
   brand: {
     logo: '#3F51B5',
     primary: '#3F51B5',
+    indigo: '#3F51B5',
   },
   success: {
     x100: '#E9F8D8',

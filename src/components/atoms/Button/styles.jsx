@@ -25,3 +25,7 @@ export const Button = styled.button`
         : colors.grays.buttonDisabled};
   }
 `
+export const Link = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+`

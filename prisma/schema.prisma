@@ -10,6 +10,6 @@ datasource db {
 model users {
   id                    String  @id @default(auto()) @map("_id") @db.ObjectId
   didCompleteOnboarding Boolean
+  didCompleteRegister   Boolean
   email                 String
-  loginCount            Int
 }

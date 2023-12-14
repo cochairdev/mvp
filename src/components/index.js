@@ -1,1 +1,1 @@
-export { default as Login } from './organisms/Login'
+export { Login } from './organisms/Login'

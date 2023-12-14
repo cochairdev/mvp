@@ -3,6 +3,7 @@
    License: none (public domain)
 */
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,3 +47,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+html, body{
+	min-height: 100vh;
+}
+
+.slick-slide > div {
+	display: grid;
+	place-items: center;
+	width: 80%;
+	margin-top: 50px;
+	margin: auto;
+	height: 500px;
+	padding: 0px;
+  }

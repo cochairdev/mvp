@@ -25,7 +25,6 @@ const EmailLinkAuth = () => {
 
       try {
         // send sign in link
-        // console.log('pressed', auth, email, settings)
         console.log(email)
         await sendSignInLinkToEmail(auth, email, settings)
 
@@ -48,22 +47,10 @@ const EmailLinkAuth = () => {
   if (state.success) {
     return <span>Yay, link successfully sent!</span>
   }
-
   return (
     <form className={'w-full'} onSubmit={onSubmit}>
       <div className={'flex flex-col space-y-2'}>
-        <TextField>
-          <TextField.Label>
-            Email Address
-            <TextField.Input
-              data-cy={'email-input'}
-              required
-              type="email"
-              placeholder={'your@email.com'}
-              name={'email'}
-            />
-          </TextField.Label>
-        </TextField>
+        <TextField></TextField>
 
         <Button type="submit" loading={state.loading}>
           {state.loading && <>Sending Email Link...</>}

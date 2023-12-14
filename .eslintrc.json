@@ -7,11 +7,7 @@
     "jest": true
   },
   // https://github.com/babel/babel-eslint
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "requireConfigFile": false
-  },
-  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort", "import"],
+  "plugins": ["prettier", "simple-import-sort", "import"],
   "overrides": [
     {
       "files": ["*.js"],
@@ -35,7 +31,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx", ".tsx"]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "import/extensions": 0,
@@ -101,9 +97,6 @@
   "settings": {
     "react": {
       "version": "detect"
-    },
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
       "typescript": {
