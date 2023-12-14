@@ -69,3 +69,10 @@ export const StepsContainer = styled.div`
   align-items: flex-end;
   margin-bottom: 1rem;
 `
+
+export const NonFullWidthInputContainer = styled.div`
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0 1rem;
+`

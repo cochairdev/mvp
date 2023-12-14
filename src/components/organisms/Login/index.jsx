@@ -1,12 +1,24 @@
 import { Text } from '@components/atoms'
-import { TextField, Button, Checkbox, FormControlLabel } from '@mui/material'
+import {
+  TextField,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormControl,
+} from '@mui/material'
 import Slider from 'react-slick'
 import { colors } from '@/theme'
-import Image from 'next/image'
 
 import * as S from './styles'
 
 export const Login = ({ email }) => {
+  const handleSubmit = event => {
+    event.preventDefault()
+    const data = new FormData(event.target)
+    for (let pair of data.entries()) {
+      console.log(pair[0] + ': ' + pair[1])
+    }
+  }
   return (
     <S.MainContainer>
       <S.SectionContainers>
@@ -25,47 +37,57 @@ export const Login = ({ email }) => {
               /2
             </Text>
           </S.StepsContainer>
-          <TextField label="Name" variant="outlined" />
-          <TextField label="LastName" variant="outlined" />
-          <TextField
-            label="Company"
-            variant="outlined"
-            fullWidth
-            margin={'normal'}
-          />
+          <form onSubmit={handleSubmit}>
+            <S.NonFullWidthInputContainer>
+              <TextField name="name" label="Name" variant="outlined" />
+              <TextField name="lastName" label="Last Name" variant="outlined" />
+            </S.NonFullWidthInputContainer>
+            <TextField
+              label="Company"
+              variant="outlined"
+              fullWidth
+              name="company"
+              margin={'normal'}
+            />
 
-          <TextField
-            label="Position"
-            variant="outlined"
-            fullWidth
-            margin={'normal'}
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            label="I am an employee of this company."
-          />
-          <FormControlLabel
-            control={<Checkbox />}
-            label="I am going to manage the Cochair platform for my company."
-          />
-          <TextField
-            label="Email"
-            value={email || ''}
-            variant="filled"
-            fullWidth
-            disabled={email}
-            margin={'normal'}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            onClick={() => {
-              console.log('clicked')
-            }}
-          >
-            Next
-          </Button>
+            <TextField
+              label="Position"
+              variant="outlined"
+              fullWidth
+              margin={'normal'}
+              name="position"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="I am an employee of this company."
+              name="IsEmployee"
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="I am going to manage the Cochair platform for my company."
+              name="IsManager"
+            />
+            <TextField
+              label="Email"
+              value={email || ''}
+              variant="filled"
+              fullWidth
+              disabled={email}
+              margin={'normal'}
+              name="email"
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              fullWidth
+              onClick={() => {
+                console.log('clicked')
+              }}
+            >
+              Next
+            </Button>
+          </form>
         </S.FormSection>
         <S.CarouselSection>
           <S.CarrouselContainer>
