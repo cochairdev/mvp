@@ -1,12 +1,15 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useAuth } from 'reactfire'
 import { useRequestState } from '@/lib/hooks/useRequestState'
 import { TextField, Button } from '@mui/material'
 import { sendSignInLinkToEmail } from 'firebase/auth'
+import { EmailVerify } from '@/components/organisms'
 
 const EmailLinkAuth = () => {
   const auth = useAuth()
   const { state, setLoading, setData, setError } = useRequestState()
+
+  const [inputEmail, setInputEmail] = useState('')
 
   const onSubmit = useCallback(
     async event => {
@@ -14,6 +17,7 @@ const EmailLinkAuth = () => {
 
       // read the email field of the form
       const email = event.target[0].value
+      setInputEmail(email)
 
       setLoading(true)
 
@@ -25,7 +29,6 @@ const EmailLinkAuth = () => {
 
       try {
         // send sign in link
-        console.log(email)
         await sendSignInLinkToEmail(auth, email, settings)
 
         // save email in storage, so we can compare
@@ -45,7 +48,14 @@ const EmailLinkAuth = () => {
     /* SUCCESS! */
   }
   if (state.success) {
-    return <span>Yay, link successfully sent!</span>
+    return (
+      <EmailVerify
+        email={inputEmail}
+        sendEmail={() => {
+          sendSignInLinkToEmail(auth, email, settings)
+        }}
+      />
+    )
   }
   return (
     <form className={'w-full'} onSubmit={onSubmit}>

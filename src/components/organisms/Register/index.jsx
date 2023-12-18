@@ -1,17 +1,11 @@
 import { Text } from '@components/atoms'
-import {
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  FormControl,
-} from '@mui/material'
+import { TextField, Button, Checkbox, FormControlLabel } from '@mui/material'
 import Slider from 'react-slick'
 import { colors } from '@/theme'
 
 import * as S from './styles'
 
-export const Login = ({ email }) => {
+export const Register = ({ email }) => {
   const handleSubmit = event => {
     event.preventDefault()
     const data = new FormData(event.target)

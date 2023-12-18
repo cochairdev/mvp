@@ -149,7 +149,6 @@ const MainComponent = ({ Component, pageProps }) => {
 
   if (session) {
     return (
-      //   <Layout>
       <>
         <AuthProvider sdk={auth}>
           <DatabaseProvider sdk={database}>
@@ -159,11 +158,9 @@ const MainComponent = ({ Component, pageProps }) => {
           </DatabaseProvider>
         </AuthProvider>
       </>
-      //   </Layout>
     )
   }
   return (
-    // <Container>
     <>
       <AuthProvider sdk={auth}>
         <DatabaseProvider sdk={database}>
@@ -172,7 +169,6 @@ const MainComponent = ({ Component, pageProps }) => {
         </DatabaseProvider>
       </AuthProvider>
     </>
-    // </Container>
   )
 }
 

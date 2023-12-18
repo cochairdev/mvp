@@ -1,11 +1,11 @@
 import { useUser } from 'reactfire'
-import { Login } from '@/components/organisms'
+import { Register } from '@/components/organisms'
 
-const Register = () => {
+const RegisterPage = () => {
   const user = useUser()
   const email = user?.data?.email
 
-  return <Login email={email} />
+  return <Register email={email} />
 }
 
-export default Register
+export default RegisterPage

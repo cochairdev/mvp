@@ -18,6 +18,11 @@ export const baseTypographyStyles = {
     fontFamily: 'Roboto',
     fontWeight: 400,
   },
+  info: {
+    fontSize: '14px',
+    fontFamily: 'Roboto',
+    fontWeight: 400,
+  },
 }
 
 const getComponentName = variant => {
