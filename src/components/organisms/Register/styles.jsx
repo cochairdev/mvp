@@ -18,7 +18,7 @@ export const SectionContainers = styled.div`
   height: 640px;
   border-radius: 100px;
 `
-export const FormSection = styled.div`
+export const FormSection = styled.section`
   width: 100%;
   height: 100%;
   max-width: 400px;
