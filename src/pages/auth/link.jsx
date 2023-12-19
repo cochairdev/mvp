@@ -69,8 +69,9 @@ const EmailLinkAuthPage = () => {
 
   return (
     <>
-      {state.success && <EmailSuccess />}
-      {state.error && <>Error: {state.error} </>}
+      <EmailSuccess />
+      {/* {state.success && <EmailSuccess />} */}
+      {/* {state.error && <>Error: {state.error} </>} */}
     </>
   )
 }
