@@ -7,7 +7,7 @@ import { colors } from '@/theme'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
-export const EmailSuccess = ({ email, sendEmail }) => {
+export const EmailSuccess = () => {
   const router = useRouter()
   const [redirectionTimeLeft, setRedirectionTimeLeft] = useState(5)
 
@@ -33,7 +33,7 @@ export const EmailSuccess = ({ email, sendEmail }) => {
         if (userData?.didCompleteRegister && !userData?.didCompleteOnboarding) {
           route = '/onboarding'
         }
-        return router.push(route)
+        // return router.push(route)
       }
     } catch (e) {
       console.error(e)
@@ -46,7 +46,7 @@ export const EmailSuccess = ({ email, sendEmail }) => {
       console.log('will component redirect')
     }, 4000)
     const interval = setInterval(() => {
-      setRedirectionTimeLeft(prev => prev - 1)
+      setRedirectionTimeLeft(prev => (prev > 0 ? prev - 1 : 0))
     }, 1000)
     return () => {
       clearTimeout(timer)
@@ -56,7 +56,12 @@ export const EmailSuccess = ({ email, sendEmail }) => {
   return (
     <S.MainContainer>
       <S.SectionContainers>
-        <Image src="/icons/emailSuccess.svg" height={52} width={52} />
+        <Image
+          src="/icons/emailSuccess.svg"
+          alt="Icon that show success process"
+          height={52}
+          width={52}
+        />
         <S.MessageContainer>
           <Text variant="title">Email successfully verified</Text>
           <Text color={colors.grays.info} align="center" variant="info">
