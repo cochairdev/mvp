@@ -1,4 +1,4 @@
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
+import { cert, getApps, initializeApp } from 'firebase-admin/app'
 
 const firebaseAdminConfig = {
   credential: cert({

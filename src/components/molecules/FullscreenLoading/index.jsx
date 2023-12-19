@@ -7,12 +7,7 @@ import {
   Title,
 } from '@components/molecules/FullscreenLoading/styles'
 
-const FullscreenLoading = ({
-  title,
-  subTitle,
-  imgSrc,
-  extraContent,
-}) => (
+const FullscreenLoading = ({ title, subTitle, imgSrc, extraContent }) => (
   <LoadingContainer>
     <div>
       {imgSrc && (

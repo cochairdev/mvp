@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { PrismaClient } from '@prisma/client'
 
 // https://github.com/prisma/prisma/issues/1983#issuecomment-620621213

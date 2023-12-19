@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@modules": "./src/modules"
+        }
+      }
+    ],
+    "@babel/plugin-syntax-jsx",
+    "babel-plugin-styled-components"
+  ],
+  "presets": ["next/babel"]
+}

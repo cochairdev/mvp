@@ -1,9 +1,10 @@
 import { useCallback, useState } from 'react'
 import { useAuth } from 'reactfire'
-import { useRequestState } from '@/lib/hooks/useRequestState'
-import { TextField, Button } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import { sendSignInLinkToEmail } from 'firebase/auth'
+
 import { EmailVerify } from '@/components/organisms'
+import { useRequestState } from '@/lib/hooks/useRequestState'
 
 const EmailLinkAuth = () => {
   const auth = useAuth()

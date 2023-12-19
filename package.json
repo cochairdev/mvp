@@ -34,10 +34,22 @@
     "styled-reset": "^4.5.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-syntax-jsx": "^7.23.3",
+    "@babel/plugin-transform-runtime": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-react": "^7.23.3",
     "@next/bundle-analyzer": "^14.0.4",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
-    "eslint-plugin-prettier": "^5.0.1"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-jsconfig": "^1.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0"
   }
 }
