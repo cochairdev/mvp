@@ -1,49 +1,18 @@
 import { useAuth, useUser } from 'reactfire'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRequestState } from '@/lib/hooks/useRequestState'
 import { isBrowser } from '@/lib/generic/isBrowser'
 import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth'
 import axios from 'axios'
+import { EmailSuccess } from '@/components/organisms'
 
 const EmailLinkAuthPage = () => {
   const auth = useAuth()
   const user = useUser()
   const router = useRouter()
   const requestExecutedRef = useRef()
-  const { state, setError, loading } = useRequestState()
-
-  const redirectToAppHome = async () => {
-    try {
-      if (auth?.currentUser?.accessToken) {
-        const axiosInstance = axios.create({
-          baseURL: 'http://localhost:3000',
-          headers: {
-            Authorization: `Bearer ${auth?.currentUser?.accessToken}`,
-          },
-        })
-        const userDataResponse = await axiosInstance.post('/api/login', {
-          email: auth?.currentUser?.email,
-        })
-        const userData = userDataResponse.data
-        let route = '/'
-        if (userData?.didCompleteRegister && userData?.didCompleteOnboarding) {
-          route = '/dashboard'
-        }
-        if (userData?.didCompleteRegister && !userData?.didCompleteOnboarding) {
-          route = '/onboarding'
-        }
-        if (!userData?.didCompleteRegister) {
-          route = '/register'
-        }
-        return router.push(route)
-      }
-    } catch (e) {
-      console.error(e)
-    }
-    // const appHome = '/login'
-    console.log('on redirectToAppHome', user)
-  }
+  const { state, setError, loading, setState } = useRequestState()
 
   // in this effect, we execute the functions to log the user in
   useEffect(() => {
@@ -87,20 +56,7 @@ const EmailLinkAuthPage = () => {
         // let's clear the email from the storage
         clearEmailFromStorage()
 
-        // redirect user to the home page
-        if (auth?.currentUser?.accessToken) {
-          const axiosInstance = axios.create({
-            baseURL: 'http://localhost:3000',
-            headers: {
-              Authorization: `Bearer ${auth?.currentUser?.accessToken}`,
-            },
-          })
-          const userData = await axiosInstance.post('/api/login', {
-            email: auth?.currentUser?.email,
-          })
-          console.log(userData)
-        }
-        await redirectToAppHome()
+        setState({ success: true })
       } catch (e) {
         if (e) {
           setError(e.code)
@@ -113,8 +69,7 @@ const EmailLinkAuthPage = () => {
 
   return (
     <>
-      {loading && <>Loading...</>}
-      {state.success && <>Success! Redirecting...</>}
+      {state.success && <EmailSuccess />}
       {state.error && <>Error: {state.error} </>}
     </>
   )

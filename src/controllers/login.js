@@ -8,7 +8,13 @@ export const getUser = async (req, res) => {
     },
   })
   if (!user) {
-    return res.status(401).json({ message: 'User not found' })
+    const newUser = await prisma.users.create({
+      data: {
+        email: email,
+      },
+    })
+    // return res.status(401).json({ message: 'User not found' })
+    return res.json(newUser)
   } else {
     return res.json(user)
   }

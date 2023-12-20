@@ -15,18 +15,18 @@ export const EmailVerify = ({ email, sendEmail }) => {
       <S.SectionContainers>
         <Image src="icons/emailUnread.svg" height={52} width={52} />
         <S.MessageContainer>
-          <Text variant="title">Please verify your email</Text>
+          <Text variant="title">Please check your email</Text>
           <Text color={colors.grays.info} align="center" variant="info">
             You're almost there! We sent an email to{' '}
             {<S.EmailContainer>{email}</S.EmailContainer>}
           </Text>
 
-          <Text align="center" variant="info">
+          <Text color={colors.grays.info} align="center" variant="info">
             Just click on the link in that email to complete your sign up.
           </Text>
         </S.MessageContainer>
         <S.ResendEmailContainer>
-          <Text color={colors.grays.text} variant="info">
+          <Text color={colors.grays.info} variant="info">
             Still can't find the email?
           </Text>
           {!didUserResendEmail && (

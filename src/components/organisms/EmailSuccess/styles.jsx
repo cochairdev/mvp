@@ -23,7 +23,7 @@ export const SectionContainers = styled.section`
   justify-content: center;
   align-items: center;
   height: 640px;
-  border-radius: 12px;
+  border-radius: 20px;
   height: fit-content;
 `
 
@@ -34,20 +34,10 @@ export const MessageContainer = styled.div`
   align-items: center;
   margin: 32px 0;
 `
-export const EmailContainer = styled.span`
-  color: ${colors.brand.primary};
-  font-weight: 400;
-`
-export const ResendEmailContainer = styled.div`
+
+export const LinkContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 6px;
-`
-export const ResendEmailButton = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  text-decoration: underline;
 `
