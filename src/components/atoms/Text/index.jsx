@@ -13,6 +13,7 @@ export const baseTypographyStyles = {
     fontSize: '20px',
     fontFamily: 'Montserrat',
     fontWeight: 700,
+    letterSpacing: '-1px',
   },
   body: {
     fontSize: '16px',
@@ -23,6 +24,7 @@ export const baseTypographyStyles = {
     fontSize: '14px',
     fontFamily: 'Roboto',
     fontWeight: 400,
+    letterSpacing: '-0.2px',
   },
 }
 
