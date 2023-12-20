@@ -24,6 +24,7 @@ export const baseTypographyStyles = {
     fontSize: '14px',
     fontFamily: 'Roboto',
     fontWeight: 400,
+    letterSpacing: '-0.2px',
   },
 }
 

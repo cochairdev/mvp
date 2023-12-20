@@ -74,10 +74,10 @@ export const EmailSuccess = () => {
           </Text>
         </S.MessageContainer>
         <S.LinkContainer>
-          <Text color={colors.grays.text} variant="info">
+          <Text color={colors.grays.info} variant="info">
             Not redirected?
           </Text>
-          <Link href="/dashboard">Take me to the platform</Link>
+          <S.StyledLink color={colors.brand.primary} href="/dashboard">Take me to the platform</S.StyledLink>
         </S.LinkContainer>
       </S.SectionContainers>
     </S.MainContainer>
