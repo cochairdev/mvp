@@ -4,7 +4,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-import { Link, Text } from '@components/atoms'
+import { Text } from '@components/atoms'
 
 import * as S from './styles'
 
@@ -77,7 +77,9 @@ export const EmailSuccess = () => {
           <Text color={colors.grays.info} variant="info">
             Not redirected?
           </Text>
-          <S.StyledLink color={colors.brand.primary} href="/dashboard">Take me to the platform</S.StyledLink>
+          <S.StyledLink color={colors.brand.primary} href="/dashboard">
+            Take me to the platform
+          </S.StyledLink>
         </S.LinkContainer>
       </S.SectionContainers>
     </S.MainContainer>

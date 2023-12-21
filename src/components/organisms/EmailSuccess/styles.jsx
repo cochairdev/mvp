@@ -1,5 +1,6 @@
-import styled from 'styled-components'
 import Link from 'next/link'
+import styled from 'styled-components'
+
 import { colors } from '@theme'
 
 export const MainContainer = styled.div`
@@ -48,12 +49,12 @@ export const StyledLink = styled(Link)`
   font-family: 'Roboto';
   font-weight: 400;
   letter-spacing: -0.2px;
-  color: #3F51B5;
+  color: ${colors.brand.indigo};
   text-decoration: none;
   &:hover,
   &:active,
   &:visited {
     text-decoration: underline;
-    color: #3F51B5;
+    color: ${colors.brand.indigo};
   }
 `
