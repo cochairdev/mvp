@@ -1,10 +1,27 @@
-import { LoginLayout, SignUpDetails } from '@/components/organisms'
+import { useRouter } from 'next/router'
 
-const RegisterPage = () => (
-  <LoginLayout step={2}>
-    <SignUpDetails />
-    <p>Dont have an account?</p>
-  </LoginLayout>
-)
+import { FormFooter } from '@/components/molecules'
+import { SignUpDetails } from '@/components/organisms'
+import { LoginLayout } from '@/components/templates'
+
+const RegisterPage = () => {
+  const router = useRouter()
+  const handleReturnToLogin = () => router.push('/login')
+  return (
+    <LoginLayout
+      subtitle={'Complete your job information'}
+      step={2}
+      footer={
+        <FormFooter
+          text="Already have an account?"
+          actionText="Login"
+          callback={handleReturnToLogin}
+        />
+      }
+    >
+      <SignUpDetails />
+    </LoginLayout>
+  )
+}
 
 export default RegisterPage
