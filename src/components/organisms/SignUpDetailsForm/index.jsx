@@ -1,4 +1,6 @@
-import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material'
+import { Checkbox, FormControlLabel, TextField } from '@mui/material'
+
+import { Button } from '@components/atoms'
 
 import * as S from './styles'
 
@@ -14,10 +16,6 @@ export const SignUpDetails = () => {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <S.NonFullWidthInputContainer>
-        <TextField name="name" label="Name" variant="outlined" />
-        <TextField name="lastName" label="Last Name" variant="outlined" />
-      </S.NonFullWidthInputContainer>
       <TextField
         label="Company"
         variant="outlined"
@@ -26,13 +24,6 @@ export const SignUpDetails = () => {
         margin={'normal'}
       />
 
-      <TextField
-        label="Position"
-        variant="outlined"
-        fullWidth
-        margin={'normal'}
-        name="position"
-      />
       <FormControlLabel
         control={<Checkbox />}
         label="I am an employee of this company."
@@ -43,9 +34,27 @@ export const SignUpDetails = () => {
         label="I am going to manage the Cochair platform for my company."
         name="IsManager"
       />
-      <Button variant="contained" color="primary" type="submit" fullWidth>
-        Next
-      </Button>
+      <TextField
+        label="Position"
+        variant="outlined"
+        fullWidth
+        margin={'normal'}
+        name="position"
+      />
+      <S.StyledButtonContainer>
+        <Button color="primary" type="submit" fullWidth>
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          size="large"
+          fullWidth
+        >
+          Sign Up
+        </Button>
+      </S.StyledButtonContainer>
     </form>
   )
 }

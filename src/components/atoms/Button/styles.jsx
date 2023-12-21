@@ -3,18 +3,19 @@ import styled from 'styled-components'
 import { borders, colors } from '@theme'
 
 export const Button = styled.button`
-  font-family: 'Noto Sans';
+  font-family: 'Roboto';
   height: 2.87em;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'fit-content')};
   text-transform: none;
-  font-weight: 700;
-  font-size: 0.875em;
+  font-weight: 500;
+  font-size: 14px;
   background-color: ${({ variant }) =>
-    variant === 'contained' ? colors.brandSun : colors.white};
-  border: ${borders.basicCard};
-  border-radius: 0.285em;
+    variant === 'contained' ? colors.brand.primary : colors.neutrals.x100};
+  border: ${borders.outlinedButton};
+  border-radius: 20px;
   padding: 0 1em;
   color: ${({ variant }) =>
-    variant === 'contained' ? colors.whiteVariant : colors.blackLight};
+    variant === 'contained' ? colors.neutrals.white : colors.brand.primary};
   cursor: pointer;
 
   &:disabled,
