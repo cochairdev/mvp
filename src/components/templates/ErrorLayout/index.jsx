@@ -5,7 +5,7 @@ import * as S from './styles'
 
 import { Text } from '@/components/atoms/Text'
 
-const CustomErrorPage = ({
+export const ErrorLayout = ({
   title,
   description,
   imageSrc,
@@ -29,5 +29,3 @@ const CustomErrorPage = ({
     </div>
   </S.ContentContainer>
 )
-
-export default CustomErrorPage
