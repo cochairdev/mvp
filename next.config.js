@@ -19,7 +19,6 @@ const withBundleAnalyzer = isProduction
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx'],
-  transpilePackages: ['@ant-design'],
 
   webpack(config) {
     config.module.rules.push({

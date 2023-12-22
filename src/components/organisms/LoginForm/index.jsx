@@ -7,12 +7,10 @@ import {
   IconButton,
   InputAdornment,
   InputLabel,
-  OutlinedInput,
-  TextField,
 } from '@mui/material'
 import { sendSignInLinkToEmail } from 'firebase/auth'
 
-import { Button } from '@components/atoms'
+import { Button, OutlinedInput, TextField } from '@components/atoms'
 
 import * as S from './styles'
 
