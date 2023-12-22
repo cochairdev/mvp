@@ -61,3 +61,20 @@ html, body{
 	height: 500px;
 	padding: 0px;
   }
+/* This is to replace the carousel dot styles. */
+.slick-dots li button:before {
+	color: white !important;
+  }
+
+  .slick-dots li.slick-active button:before {
+	opacity: 100 !important;
+  }
+
+  .slick-dots li button:before {
+	font-size: 12px !important;
+  }
+
+  .slick-dots li {
+	margin: 0 !important;
+  }
+  /* This is to replace the carousel dot styles. */

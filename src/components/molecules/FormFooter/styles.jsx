@@ -14,4 +14,5 @@ export const ActionText = styled.button`
 export const MainContainer = styled.div`
   display: flex;
   gap: 8px;
+  justify-content: center;
 `

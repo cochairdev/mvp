@@ -8,6 +8,7 @@ export const baseTypographyStyles = {
     fontSize: '24px',
     fontFamily: 'Montserrat',
     fontWeight: 700,
+    letterSpacing: '-0.8px',
   },
   title: {
     fontSize: '20px',

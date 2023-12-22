@@ -11,20 +11,24 @@ export const LoginLayout = ({ step, children, subtitle, footer }) => (
     <S.SectionContainers>
       <S.FormSection>
         <S.Logo
-          width={168}
-          height={38}
+          width={149}
+          height={24}
           alt="Cochair Logo"
           src="images/logo.svg"
         />
         <div>
           <Text variant="title">Welcome to Cochair</Text>
-          <Text variant="body" color={colors.grays.text}>
+          <Text variant="info" color={colors.grays.text}>
             {subtitle}
           </Text>
           <S.StepsContainer>
-            {step && <Text variant="body"> {step} </Text>}
             {step && (
-              <Text variant="body" color={colors.brand.primary}>
+              <Text variant="info" color={colors.brand.primary}>
+                {step}
+              </Text>
+            )}
+            {step && (
+              <Text variant="info" color={colors.neutrals.x400}>
                 /2
               </Text>
             )}
@@ -60,7 +64,7 @@ export const LoginLayout = ({ step, children, subtitle, footer }) => (
                 width={288}
               />
               <Text align="center" variant="titleL" color="white">
-                Simplify Networking
+                Amplify Collaborations
               </Text>
             </S.CarrouselItem>
             <S.CarrouselItem>
@@ -70,7 +74,7 @@ export const LoginLayout = ({ step, children, subtitle, footer }) => (
                 width={288}
               />
               <Text align="center" variant="titleL" color="white">
-                Simplify Networking
+                Unlock Partnerships
               </Text>
             </S.CarrouselItem>
           </Slider>

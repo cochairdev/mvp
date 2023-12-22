@@ -31,7 +31,7 @@ export const SignUpForm = () => {
           <TextField name="name" label="Name" variant="outlined" required />
           <TextField
             name="lastName"
-            label="Last Name"
+            label="Last name"
             variant="outlined"
             required
           />

@@ -5,10 +5,12 @@ import { colors } from '@/theme'
 
 export const FormFooter = ({ text, actionText, callback }) => (
   <S.MainContainer>
-    <Text variant="body">{text}</Text>
+    <Text variant="info" color={colors.grays.info}>
+      {text}
+    </Text>
     <S.ActionText onClick={callback}>
       {
-        <Text variant="body" color={colors.brand.primary}>
+        <Text variant="info" color={colors.brand.primary}>
           {actionText}
         </Text>
       }
