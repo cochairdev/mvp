@@ -33,6 +33,7 @@ const EmailLinkAuth = () => {
     <LoginLayout
       subtitle="Please enter your email and password"
       footer={getFooter()}
+      step={1}
     >
       {isSignUpn ? <SignUpForm /> : <LoginForm />}
     </LoginLayout>

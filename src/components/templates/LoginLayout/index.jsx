@@ -22,8 +22,8 @@ export const LoginLayout = ({ step, children, subtitle, footer }) => (
             {subtitle}
           </Text>
           <S.StepsContainer>
-            {step === 2 && <Text variant="body"> {step} </Text>}
-            {step === 2 && (
+            {step && <Text variant="body"> {step} </Text>}
+            {step && (
               <Text variant="body" color={colors.brand.primary}>
                 /2
               </Text>
