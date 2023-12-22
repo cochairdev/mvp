@@ -1,7 +1,10 @@
 import { useState } from 'react'
-import * as S from './styles'
-import { Text } from '@components/atoms'
 import Image from 'next/image'
+
+import { Text } from '@components/atoms'
+
+import * as S from './styles'
+
 import { colors } from '@/theme'
 
 export const EmailVerify = ({ email, sendEmail }) => {
@@ -17,7 +20,7 @@ export const EmailVerify = ({ email, sendEmail }) => {
         <S.MessageContainer>
           <Text variant="title">Please check your email</Text>
           <Text color={colors.grays.info} align="center" variant="info">
-            You're almost there! We sent an email to{' '}
+            You&apos;re almost there! We sent an email to{' '}
             {<S.EmailContainer>{email}</S.EmailContainer>}
           </Text>
 
@@ -26,8 +29,8 @@ export const EmailVerify = ({ email, sendEmail }) => {
           </Text>
         </S.MessageContainer>
         <S.ResendEmailContainer>
-          <Text color={colors.grays.info} variant="info">
-            Still can't find the email?
+          <Text color={colors.grays.text} variant="info">
+            Still can&apos;t find the email?
           </Text>
           {!didUserResendEmail && (
             <S.ResendEmailButton onClick={handleSendEmail}>

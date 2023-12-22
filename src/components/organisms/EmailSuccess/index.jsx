@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from 'reactfire'
-import * as S from './styles'
-import { Text, Link } from '@components/atoms'
-import Image from 'next/image'
-import { colors } from '@/theme'
-import { useRouter } from 'next/router'
 import axios from 'axios'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+
+import { Link, Text } from '@components/atoms'
+
+import * as S from './styles'
+
+import { colors } from '@/theme'
 
 export const EmailSuccess = () => {
   const router = useRouter()
@@ -33,7 +36,7 @@ export const EmailSuccess = () => {
         if (userData?.didCompleteRegister && !userData?.didCompleteOnboarding) {
           route = '/onboarding'
         }
-        // return router.push(route)
+        return router.push(route)
       }
     } catch (e) {
       console.error(e)
@@ -41,9 +44,10 @@ export const EmailSuccess = () => {
   }
 
   useEffect(() => {
+    const isDevelopment = true
+    //TODO: remove the isDevelopment variable and remove the "!isDevelopment &&" from line 50
     const timer = setTimeout(() => {
-      redirectToAppHome()
-      console.log('will component redirect')
+      !isDevelopment && redirectToAppHome()
     }, 4000)
     const interval = setInterval(() => {
       setRedirectionTimeLeft(prev => (prev > 0 ? prev - 1 : 0))

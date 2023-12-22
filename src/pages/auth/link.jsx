@@ -1,16 +1,14 @@
-import { useAuth, useUser } from 'reactfire'
-import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import { useRequestState } from '@/lib/hooks/useRequestState'
-import { isBrowser } from '@/lib/generic/isBrowser'
+import { useAuth } from 'reactfire'
 import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth'
-import axios from 'axios'
+
 import { EmailSuccess } from '@/components/organisms'
+import { isBrowser } from '@/lib/generic/isBrowser'
+import { useRequestState } from '@/lib/hooks/useRequestState'
 
 const EmailLinkAuthPage = () => {
   const auth = useAuth()
-  const user = useUser()
-  const router = useRouter()
+
   const requestExecutedRef = useRef()
   const { state, setError, loading, setState } = useRequestState()
 
@@ -71,7 +69,7 @@ const EmailLinkAuthPage = () => {
     <>
       <EmailSuccess />
       {/* {state.success && <EmailSuccess />} */}
-      {/* {state.error && <>Error: {state.error} </>} */}
+      {state.error && <>Error: {state.error} </>}
     </>
   )
 }

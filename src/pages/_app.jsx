@@ -1,27 +1,28 @@
 import { useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
+import {
+  AuthProvider,
+  DatabaseProvider,
+  FirebaseAppProvider,
+  useFirebaseApp,
+} from 'reactfire'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { getAuth } from 'firebase/auth'
+import { getDatabase } from 'firebase/database'
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { useRouter } from 'next/router'
+import { SessionProvider, useSession } from 'next-auth/react'
+
+// import { FragmentSnackbar, LinearProgress } from '@components'
+// import FragmentLoadingOverlay from '@components/atoms/FragmentLoadingOverlay'
+import { SEO } from '@components/atoms/SEO'
+
+import StyledComponentsRegistry from '../lib/styled/registry'
+
 // import { Provider, useDispatch, useSelector } from 'react-redux'
 import './globals.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { useRouter } from 'next/router'
-import { SessionProvider, signOut, useSession } from 'next-auth/react'
-import { getAuth } from 'firebase/auth'
-import { getDatabase } from 'firebase/database'
-import {
-  FirebaseAppProvider,
-  DatabaseProvider,
-  AuthProvider,
-  useFirebaseApp,
-} from 'reactfire'
-import StyledComponentsRegistry from '../lib/styled/registry'
-
-// import { FragmentSnackbar, LinearProgress } from '@components'
-// import FragmentLoadingOverlay from '@components/atoms/FragmentLoadingOverlay'
-// import SEO from '@components/atoms/SEO'
 // import { Container } from '@components/organisms/Login/styles'
 // import ErrorLayout from '@components/templates/ErrorLayout'
 // import Layout from '@components/templates/Layout'
@@ -47,47 +48,34 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
 
-const App = ({ Component, pageProps }) => {
-  return (
-    <ErrorBoundary
-      fallbackRender={() => (
-        <>
-          {/* <SEO
-                title="An error has occurred"
-                description="An error has occurred and the application can't continue. Please try again later, or contact an administrator if the problem persists."
-              /> */}
-          {/* <ErrorLayout
-                title="An error has occurred"
-                description={
-                  "An error has occurred and the application can't continue. Please try again later, or contact an administrator if the problem persists."
-                }
-                imageSrc="/images/svg/500.svg"
-                primaryActionText="Return to dashboard"
-                onClick={() => {
-                  signOut({ redirect: true, callbackUrl: '/login' })
-                }}
-              /> */}
-        </>
-      )}
-    >
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        <QueryClientProvider client={queryClient}>
-          <SessionProvider session={pageProps.session}>
-            <StyledComponentsRegistry>
-              {/* <Provider store={store}> */}
-              {/* <MessagesProvider> */}
-              {/* <FragmentSnackbar /> */}
-              <MainComponent Component={Component} pageProps={pageProps} />
-              {/* </MessagesProvider> */}
-              {/* </Provider> */}
-            </StyledComponentsRegistry>
-          </SessionProvider>
-          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-        </QueryClientProvider>
-      </FirebaseAppProvider>
-    </ErrorBoundary>
-  )
-}
+const App = ({ Component, pageProps }) => (
+  <ErrorBoundary
+    fallbackRender={() => (
+      <>
+        <SEO
+          title="An error has occurred"
+          description="An error has occurred and the application can't continue. Please try again later, or contact an administrator if the problem persists."
+        />
+      </>
+    )}
+  >
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <QueryClientProvider client={queryClient}>
+        <SessionProvider session={pageProps.session}>
+          <StyledComponentsRegistry>
+            {/* <Provider store={store}> */}
+            {/* <MessagesProvider> */}
+            {/* <FragmentSnackbar /> */}
+            <MainComponent Component={Component} pageProps={pageProps} />
+            {/* </MessagesProvider> */}
+            {/* </Provider> */}
+          </StyledComponentsRegistry>
+        </SessionProvider>
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      </QueryClientProvider>
+    </FirebaseAppProvider>
+  </ErrorBoundary>
+)
 
 const Loading = () => {
   const router = useRouter()
@@ -117,10 +105,9 @@ const Loading = () => {
 
 const MainComponent = ({ Component, pageProps }) => {
   //   const { showOverlay, message } = useAppSelector(store => store.app)
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
   //   const user = useSelector(selectUser)
   //   const dispatch = useDispatch()
-  const router = useRouter()
   const firebaseApp = useFirebaseApp()
   const database = getDatabase(firebaseApp)
   const auth = getAuth(firebaseApp)

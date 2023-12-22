@@ -1,8 +1,5 @@
-import { initializeApp } from 'firebase/app'
-
-import { getApps, getApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-import { EmailAuthProvider } from 'firebase/auth'
+import { getApp, getApps, initializeApp } from 'firebase/app'
+import { EmailAuthProvider, getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
