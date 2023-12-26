@@ -1,6 +1,9 @@
-import { Checkbox, FormControlLabel } from '@mui/material'
-
-import { Button, TextField } from '@components/atoms'
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+} from '@components/atoms'
 
 import * as S from './styles'
 

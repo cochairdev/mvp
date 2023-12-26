@@ -2,15 +2,10 @@ import { useCallback, useState } from 'react'
 import { useAuth } from 'reactfire'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import {
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-} from '@mui/material'
+import { FormControl, IconButton, InputAdornment } from '@mui/material'
 import { sendSignInLinkToEmail } from 'firebase/auth'
 
-import { Button, OutlinedInput, TextField } from '@components/atoms'
+import { Button, InputLabel, OutlinedInput, TextField } from '@components/atoms'
 
 import * as S from './styles'
 
