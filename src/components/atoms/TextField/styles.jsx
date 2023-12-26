@@ -3,31 +3,51 @@ import { styled } from '@mui/system'
 
 export const StyledButtonContainer = styled(TextField)({
   '& label.Mui-focused': {
-    color: '#A0AAB4',
+    color: 'red',
   },
   '& .MuiInput-underline:after': {
     borderBottomColor: '#B2BAC2',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#E0E3E7',
+      borderColor: '#CCCCCC',
     },
     '&:hover fieldset': {
-      borderColor: '#B2BAC2',
+      borderColor: '#777777',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#6F7E8C',
+      borderColor: '#3F51B5',
     },
   },
   '& .MuiInputBase-input': {
-    color: 'blue', // This will change the text color
+    color: '#333333', // This will change the text color
   },
+  '& .MuiInputLabel-root': {
+    color: '#999999', // This will change the placeholder/label text color
+    fontSize: '16px',
+    letterSpacing: '-0.3px',
+  },
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: '#3F51B5', // This will keep the placeholder/label text color green when focused
+  },
+  marginBottom: '16px',
+  marginTop: '0px',
 })
 
 export const StyledOutlinedInput = styled(OutlinedInput)({
   '& .MuiInputBase-input': {
     // This component is used on Password field
-    color: 'blue', // This will change the text color
+    color: '#333333', // This will change the text color
   },
-  marginBottom: '20px',
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: '#CCCCCC', // This will change the border color
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: '#777777', // This will change the border color on hover
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: '#3F51B5', // This will change the border color when focused
+  },
+  marginBottom: '0px',
+  marginTop: 'px',
 })
