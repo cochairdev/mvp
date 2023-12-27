@@ -26,17 +26,18 @@ export const SignUpDetails = () => {
         name="company"
         margin={'normal'}
       />
-
-      <FormControlLabel
-        control={<Checkbox />}
-        label="I am an employee of this company."
-        name="IsEmployee"
-      />
-      <FormControlLabel
-        control={<Checkbox />}
-        label="I am going to manage the Cochair platform for my company."
-        name="IsManager"
-      />
+      <S.StyledOptionContainer>
+        <FormControlLabel
+          control={<Checkbox />}
+          label="I am an employee of this company."
+          name="IsEmployee"
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="I am going to manage the Cochair platform for my company."
+          name="IsManager"
+        />
+      </S.StyledOptionContainer>
       <TextField
         label="Position"
         variant="outlined"
@@ -55,7 +56,7 @@ export const SignUpDetails = () => {
           size="large"
           fullWidth
         >
-          Sign Up
+          Sign up
         </Button>
       </S.StyledButtonContainer>
     </form>

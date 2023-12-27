@@ -30,7 +30,7 @@ export const StyledButtonContainer = styled(TextField)({
   '& .MuiInputLabel-root.Mui-focused': {
     color: '#3F51B5', // This will keep the placeholder/label text color green when focused
   },
-  marginBottom: '16px',
+  marginBottom: '24px',
   marginTop: '0px',
 })
 
@@ -49,5 +49,5 @@ export const StyledOutlinedInput = styled(OutlinedInput)({
     borderColor: '#3F51B5', // This will change the border color when focused
   },
   marginBottom: '0px',
-  marginTop: 'px',
+  marginTop: '0px',
 })

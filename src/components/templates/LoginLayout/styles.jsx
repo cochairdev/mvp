@@ -69,5 +69,5 @@ export const StepsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-bottom: 1rem;
+  margin-bottom: 32px;
 `

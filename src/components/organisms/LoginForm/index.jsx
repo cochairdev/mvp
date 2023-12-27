@@ -117,7 +117,7 @@ export const LoginForm = () => {
             fullWidth
           >
             {state.loading && <>Sending Email Link...</>}
-            {!state.loading && <>Send Email Link</>}
+            {!state.loading && <>Log in</>}
           </Button>
         </S.StyledButtonContainer>
       </div>
