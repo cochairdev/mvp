@@ -31,6 +31,7 @@ export default {
     subtle: '#777777',
     info: '#666666',
     text: '#666666',
+    medium: '#999999',
     sideMenuDefault: '#E2EBF4',
     sideMenuIcon: '#ABC0D6',
     buttonDisabled: '#D1D1D1',
