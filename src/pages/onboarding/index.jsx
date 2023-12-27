@@ -1,5 +1,3 @@
-const Onboarding = () => {
-  return <div>Onboarding</div>
-}
+const Onboarding = () => <div>Onboarding</div>
 
 export default Onboarding

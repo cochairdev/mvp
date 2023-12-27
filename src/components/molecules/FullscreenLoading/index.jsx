@@ -7,7 +7,7 @@ import {
   Title,
 } from '@components/molecules/FullscreenLoading/styles'
 
-const FullscreenLoading = ({
+export const FullscreenLoading = ({
   title,
   subTitle,
   imgSrc,
@@ -26,5 +26,3 @@ const FullscreenLoading = ({
     </div>
   </LoadingContainer>
 )
-
-export default FullscreenLoading

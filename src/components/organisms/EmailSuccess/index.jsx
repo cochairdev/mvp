@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from 'reactfire'
-import * as S from './styles'
-import { Text, Link } from '@components/atoms'
-import Image from 'next/image'
-import { colors } from '@/theme'
-import { useRouter } from 'next/router'
 import axios from 'axios'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
-export const EmailSuccess = ({ email, sendEmail }) => {
+import { Text } from '@components/atoms'
+
+import * as S from './styles'
+
+import { colors } from '@/theme'
+
+export const EmailSuccess = () => {
   const router = useRouter()
   const [redirectionTimeLeft, setRedirectionTimeLeft] = useState(5)
 
@@ -41,12 +44,13 @@ export const EmailSuccess = ({ email, sendEmail }) => {
   }
 
   useEffect(() => {
+    const isDevelopment = true
+    //TODO: remove the isDevelopment variable and remove the "!isDevelopment &&" from line 50
     const timer = setTimeout(() => {
-      redirectToAppHome()
-      console.log('will component redirect')
+      !isDevelopment && redirectToAppHome()
     }, 4000)
     const interval = setInterval(() => {
-      setRedirectionTimeLeft(prev => prev - 1)
+      setRedirectionTimeLeft(prev => (prev > 0 ? prev - 1 : 0))
     }, 1000)
     return () => {
       clearTimeout(timer)
@@ -56,7 +60,12 @@ export const EmailSuccess = ({ email, sendEmail }) => {
   return (
     <S.MainContainer>
       <S.SectionContainers>
-        <Image src="/icons/emailSuccess.svg" height={52} width={52} />
+        <Image
+          src="/icons/emailSuccess.svg"
+          alt="Icon that show success process"
+          height={52}
+          width={52}
+        />
         <S.MessageContainer>
           <Text variant="title">Email successfully verified</Text>
           <Text color={colors.grays.info} align="center" variant="info">
@@ -65,10 +74,12 @@ export const EmailSuccess = ({ email, sendEmail }) => {
           </Text>
         </S.MessageContainer>
         <S.LinkContainer>
-          <Text color={colors.grays.text} variant="info">
+          <Text color={colors.grays.info} variant="info">
             Not redirected?
           </Text>
-          <Link href="/dashboard">Take me to the platform</Link>
+          <S.StyledLink color={colors.brand.primary} href="/dashboard">
+            Take me to the platform
+          </S.StyledLink>
         </S.LinkContainer>
       </S.SectionContainers>
     </S.MainContainer>

@@ -1,5 +1,7 @@
-import { Register } from './Register'
-import { EmailVerify } from './EmailVerify'
 import { EmailSuccess } from './EmailSuccess'
+import { EmailVerify } from './EmailVerify'
+import { LoginForm } from './LoginForm'
+import { SignUpDetails } from './SignUpDetailsForm'
+import { SignUpForm } from './SignUpForm'
 
-export { Register, EmailVerify, EmailSuccess }
+export { SignUpDetails, EmailVerify, EmailSuccess, LoginForm, SignUpForm }

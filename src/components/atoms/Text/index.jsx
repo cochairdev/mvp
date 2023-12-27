@@ -1,12 +1,14 @@
-import styled from 'styled-components'
-import { colors } from '@theme'
 import { createElement } from 'react'
+import styled from 'styled-components'
+
+import { colors } from '@theme'
 
 export const baseTypographyStyles = {
   titleL: {
     fontSize: '24px',
     fontFamily: 'Montserrat',
     fontWeight: 700,
+    letterSpacing: '-0.8px',
   },
   title: {
     fontSize: '20px',
@@ -23,6 +25,7 @@ export const baseTypographyStyles = {
     fontSize: '14px',
     fontFamily: 'Roboto',
     fontWeight: 400,
+    letterSpacing: '-0.2px',
   },
 }
 

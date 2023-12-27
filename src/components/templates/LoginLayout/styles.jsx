@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import Image from 'next/image'
+import styled from 'styled-components'
 
-import { borders, breakpoints, colors } from '@theme'
+import { colors } from '@theme'
 
 export const MainContainer = styled.div`
   display: flex;
@@ -20,26 +20,27 @@ export const SectionContainers = styled.div`
 `
 export const FormSection = styled.section`
   width: 100%;
-  height: 100%;
+  height: 90%;
+  min-width: 400px;
   max-width: 400px;
   padding: 64px;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border-radius: 20px 0 0 20px;
+  justify-content: space-between;
+  border-radius: 12px 0 0 12px;
   background-color: ${colors.neutrals.x100};
 `
 export const CarouselSection = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   max-width: 400px;
   padding: 64px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 12px 12px 0;
   background-color: ${colors.brand.indigo};
 `
 
@@ -47,7 +48,7 @@ export const CarrouselContainer = styled.div`
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0;
   position: relative;
 `
 export const CarrouselItem = styled.div`
@@ -57,6 +58,7 @@ export const CarrouselItem = styled.div`
   margin-bottom: 60px;
   align-items: center;
   height: 350px;
+  text-align: -webkit-center;
 `
 export const Logo = styled(Image)``
 export const CarouselImage = styled(Image)`
@@ -67,12 +69,5 @@ export const StepsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-bottom: 1rem;
-`
-
-export const NonFullWidthInputContainer = styled.div`
-  width: 100%;
-  margin-bottom: 1rem;
-  display: flex;
-  gap: 0 1rem;
+  margin-bottom: 32px;
 `

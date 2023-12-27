@@ -1,13 +1,8 @@
 import * as S from './styles'
 
-export const Button = ({ size = 'default', variant = 'primary', ...props }) => {
+export const Button = ({ variant = 'primary', ...props }) => {
   const ButtonComponent = (
-    <S.Button
-      {...props}
-      $variant={variant}
-      $size={size}
-      $disabled={props.disabled}
-    >
+    <S.Button {...props} variant={variant} disabled={props.disabled}>
       {props.children}
     </S.Button>
   )
