@@ -6,3 +6,4 @@ export const StyledButtonContainer = styled.div`
   align-items: center;
   gap: 0 1rem;
 `
+export const StyledOptionContainer = styled.div``
