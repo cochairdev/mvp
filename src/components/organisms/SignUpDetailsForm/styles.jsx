@@ -9,4 +9,3 @@ export const StyledButtonContainer = styled.div`
 export const StyledOptionContainer = styled.div`
   margin-bottom: 32px;
 `
-export const StyledOptionContainer = styled.div``
