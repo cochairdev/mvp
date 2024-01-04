@@ -1,4 +1,7 @@
-import prisma from '@prisma'
+// import prisma from '@prisma'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 export const getUser = async (req, res) => {
   const { email } = req.body
@@ -18,4 +21,20 @@ export const getUser = async (req, res) => {
   } else {
     return res.json(user)
   }
+}
+
+export const verifyEmail = async (req, res) => {
+  const { email } = req.body
+  const user = await prisma.users.findFirst({
+    where: { email },
+  })
+  const updatedUser = await prisma.users.update({
+    where: {
+      id: user.id,
+    },
+    data: {
+      isEmailVerified: true,
+    },
+  })
+  res.json(updatedUser)
 }

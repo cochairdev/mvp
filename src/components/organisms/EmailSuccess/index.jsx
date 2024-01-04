@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from 'reactfire'
-import axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -8,10 +7,12 @@ import { Text } from '@components/atoms'
 
 import * as S from './styles'
 
+import { useAxios } from '@/lib/axios/useAxios'
 import { colors } from '@/theme'
 
 export const EmailSuccess = () => {
   const router = useRouter()
+  const axios = useAxios()
   const [redirectionTimeLeft, setRedirectionTimeLeft] = useState(5)
 
   const auth = useAuth()
@@ -19,13 +20,7 @@ export const EmailSuccess = () => {
   const redirectToAppHome = async () => {
     try {
       if (auth?.currentUser?.accessToken) {
-        const axiosInstance = axios.create({
-          baseURL: 'http://localhost:3000',
-          headers: {
-            Authorization: `Bearer ${auth?.currentUser?.accessToken}`,
-          },
-        })
-        const userDataResponse = await axiosInstance.post('/api/login', {
+        const userDataResponse = await axios.post('/api/login', {
           email: auth?.currentUser?.email,
         })
         const userData = userDataResponse.data
@@ -44,7 +39,7 @@ export const EmailSuccess = () => {
   }
 
   useEffect(() => {
-    const isDevelopment = true
+    const isDevelopment = false
     //TODO: remove the isDevelopment variable and remove the "!isDevelopment &&" from line 50
     const timer = setTimeout(() => {
       !isDevelopment && redirectToAppHome()

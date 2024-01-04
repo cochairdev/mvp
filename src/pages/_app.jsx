@@ -11,7 +11,6 @@ import { getAuth } from 'firebase/auth'
 import { getDatabase } from 'firebase/database'
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useRouter } from 'next/router'
-import { SessionProvider, useSession } from 'next-auth/react'
 
 // import { FragmentSnackbar, LinearProgress } from '@components'
 // import FragmentLoadingOverlay from '@components/atoms/FragmentLoadingOverlay'
@@ -61,16 +60,14 @@ const App = ({ Component, pageProps }) => (
   >
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <QueryClientProvider client={queryClient}>
-        <SessionProvider session={pageProps.session}>
-          <StyledComponentsRegistry>
-            {/* <Provider store={store}> */}
-            {/* <MessagesProvider> */}
-            {/* <FragmentSnackbar /> */}
-            <MainComponent Component={Component} pageProps={pageProps} />
-            {/* </MessagesProvider> */}
-            {/* </Provider> */}
-          </StyledComponentsRegistry>
-        </SessionProvider>
+        <StyledComponentsRegistry>
+          {/* <Provider store={store}> */}
+          {/* <MessagesProvider> */}
+          {/* <FragmentSnackbar /> */}
+          <MainComponent Component={Component} pageProps={pageProps} />
+          {/* </MessagesProvider> */}
+          {/* </Provider> */}
+        </StyledComponentsRegistry>
         {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </FirebaseAppProvider>
@@ -105,7 +102,6 @@ const Loading = () => {
 
 const MainComponent = ({ Component, pageProps }) => {
   //   const { showOverlay, message } = useAppSelector(store => store.app)
-  const { data: session } = useSession()
   //   const user = useSelector(selectUser)
   //   const dispatch = useDispatch()
   const firebaseApp = useFirebaseApp()
@@ -134,7 +130,7 @@ const MainComponent = ({ Component, pageProps }) => {
   //     }
   //   }, [status, user])
 
-  if (session) {
+  if (auth.currentUser) {
     return (
       <>
         <AuthProvider sdk={auth}>

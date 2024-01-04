@@ -16,7 +16,7 @@ export const EmailVerify = ({ email, sendEmail }) => {
   return (
     <S.MainContainer>
       <S.SectionContainers>
-        <Image src="icons/emailUnread.svg" height={52} width={52} />
+        <Image src="/icons/emailUnread.svg" height={52} width={52} />
         <S.MessageContainer>
           <Text variant="title">Please check your email</Text>
           <Text color={colors.grays.info} align="center" variant="info">

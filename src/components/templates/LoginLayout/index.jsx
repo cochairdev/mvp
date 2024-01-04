@@ -6,7 +6,7 @@ import * as S from './styles'
 
 import { colors } from '@/theme'
 
-export const LoginLayout = ({ step, children, subtitle, footer }) => (
+export const LoginLayout = ({ step, children, subtitle, title, footer }) => (
   <S.MainContainer>
     <S.SectionContainers>
       <S.FormSection>
@@ -17,7 +17,7 @@ export const LoginLayout = ({ step, children, subtitle, footer }) => (
           src="images/logo.svg"
         />
         <div>
-          <Text variant="title">Welcome to Cochair</Text>
+          <Text variant="title">{title}</Text>
           <Text variant="info" color={colors.grays.text}>
             {subtitle}
           </Text>
