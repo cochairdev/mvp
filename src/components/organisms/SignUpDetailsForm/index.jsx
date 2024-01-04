@@ -13,9 +13,6 @@ export const SignUpDetails = () => {
     const data = new FormData(event.target)
     const values = Object.fromEntries(data.entries())
     return values
-    // for (let pair of data.entries()) {
-    //   console.log(pair[0] + ': ' + pair[1])
-    // }
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -26,6 +23,7 @@ export const SignUpDetails = () => {
         name="company"
         margin={'normal'}
       />
+
       <S.StyledOptionContainer>
         <FormControlLabel
           control={<Checkbox />}

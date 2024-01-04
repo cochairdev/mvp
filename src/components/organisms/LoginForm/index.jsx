@@ -1,23 +1,36 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from 'reactfire'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { FormControl, IconButton, InputAdornment } from '@mui/material'
-import { sendSignInLinkToEmail } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useFormik } from 'formik'
+import { useRouter } from 'next/router'
+import * as yup from 'yup'
 
 import { Button, InputLabel, OutlinedInput, TextField } from '@components/atoms'
 
 import * as S from './styles'
 
-import { EmailVerify } from '@/components/organisms'
 import { useRequestState } from '@/lib/hooks/useRequestState'
 
-export const LoginForm = () => {
+export const LoginForm = ({ forgotPasswordCallback }) => {
   const auth = useAuth()
   const { state, setLoading, setData, setError } = useRequestState()
+  const router = useRouter()
 
-  const [inputEmail, setInputEmail] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+
+  const validationSchema = yup.object({
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
+    password: yup
+      .string('Enter your password')
+      .min(8)
+      .required('Password is required'),
+  })
 
   const handleClickShowPassword = () => setShowPassword(show => !show)
 
@@ -25,52 +38,44 @@ export const LoginForm = () => {
     event.preventDefault()
   }
 
-  const onSubmit = useCallback(
-    async event => {
-      event.preventDefault()
+  const onSubmit = async event => {
+    event.preventDefault()
 
-      // read the email field of the form
-      const email = event.target[0].value
-      setInputEmail(email)
+    // read the email field of the form
+    const email = formik.values.email
+    const password = formik.values.password
 
-      setLoading(true)
+    setLoading(true)
 
-      // set up return URL (where we will redirect the user)
-      const settings = {
-        url: getAuthUrl(),
-        handleCodeInApp: true,
-      }
+    try {
+      // send sign in link
+      await signInWithEmailAndPassword(auth, email, password)
 
-      try {
-        // send sign in link
-        await sendSignInLinkToEmail(auth, email, settings)
+      // save email in storage, so we can compare
+      // it when the user uses the link from the email
+      storeEmailInStorage(email)
+      router.push('login/verify')
 
-        // save email in storage, so we can compare
-        // it when the user uses the link from the email
-        storeEmailInStorage(email)
+      // success (turns state.success to "true")
+      setData()
+    } catch (error) {
+      setError(error)
+    }
+  }
 
-        // success (turns state.success to "true")
-        setData()
-      } catch (error) {
-        setError(error)
-      }
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
     },
-    [auth, setData, setError, setLoading],
-  )
+    validationSchema: validationSchema,
+    onSubmit,
+  })
 
   {
     /* SUCCESS! */
   }
-  if (state.success) {
-    return (
-      <EmailVerify
-        email={inputEmail}
-        sendEmail={() => {
-          sendSignInLinkToEmail(auth, email, settings)
-        }}
-      />
-    )
-  }
+
   return (
     <form className={'w-full'} onSubmit={onSubmit}>
       <div className={'flex flex-col space-y-2'}>
@@ -79,6 +84,11 @@ export const LoginForm = () => {
           variant="outlined"
           fullWidth
           required
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+          onBlur={formik.handleBlur}
           name="email"
           type="email"
           margin={'normal'}
@@ -89,8 +99,14 @@ export const LoginForm = () => {
             Password
           </InputLabel>
           <OutlinedInput
-            id="outlined-adornment-password"
+            id="password"
             type={showPassword ? 'text' : 'password'}
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+            onBlur={formik.handleBlur}
             required
             fullWidth
             endAdornment={
@@ -108,7 +124,9 @@ export const LoginForm = () => {
             label="Password"
           />
         </FormControl>
-
+        <S.StyledPasswordResetButton onClick={forgotPasswordCallback}>
+          Forgot password?
+        </S.StyledPasswordResetButton>
         <S.StyledButtonContainer>
           <Button
             type="submit"
@@ -126,14 +144,6 @@ export const LoginForm = () => {
     </form>
   )
 }
-
-function getAuthUrl() {
-  const origin = window.location.origin
-  const path = '/auth/link'
-
-  return [origin, path].join('')
-}
-
 function storeEmailInStorage(email) {
   window.localStorage.setItem('emailForSignIn', email)
 }
